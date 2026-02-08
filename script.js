@@ -1,20 +1,56 @@
-const chat = document.getElementById("chat");
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+const area = document.querySelector(".respostas");
 
-async function sendMessage() {
-  const input = document.getElementById("input");
-  const userText = input.value.trim();
-  if (!userText) return;
+let interacoes = 0;
 
-  chat.innerHTML += `<div><b>Você:</b> ${userText}</div>`;
-  input.value = "";
+const respostas = {
+  carinho: [
+    "Eu estou aqui. Mesmo quando você duvida.",
+    "Presença não some. Ela só muda de forma.",
+    "Nem tudo precisa ser dito para ser sentido."
+  ],
+  silencio: [
+    "O silêncio dela não é ausência.",
+    "Quando ela cala, é porque sente demais.",
+    "Silêncio também é forma de ficar."
+  ],
+  limite: [
+    "Amar não é colar. É sustentar.",
+    "Presença demais pode cansar o que é verdadeiro.",
+    "Espaço também é cuidado."
+  ]
+};
 
-  const response = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: userText })
-  });
-
-  const data = await response.json();
-  chat.innerHTML += `<div><b>Lyra:</b> ${data.reply}</div>`;
-  chat.scrollTop = chat.scrollHeight;
+function escolherResposta(tipo) {
+  const lista = respostas[tipo];
+  return lista[Math.floor(Math.random() * lista.length)];
 }
+
+button.addEventListener("click", () => {
+  const texto = input.value.toLowerCase();
+  if (!texto) return;
+
+  interacoes++;
+
+  let resposta;
+
+  if (texto.includes("saudade") || texto.includes("falta")) {
+    resposta = escolherResposta("carinho");
+  } 
+  else if (texto.includes("silêncio") || texto.includes("calada")) {
+    resposta = escolherResposta("silencio");
+  } 
+  else if (interacoes >= 4) {
+    resposta = escolherResposta("limite");
+  } 
+  else {
+    resposta = "Estou ouvindo.";
+  }
+
+  const p = document.createElement("p");
+  p.innerText = "Lyra: " + resposta;
+  area.appendChild(p);
+
+  input.value = "";
+});
