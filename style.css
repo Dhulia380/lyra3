@@ -1,53 +1,67 @@
 body {
-  background: #0E1621;
-  color: #EAE7E2;
-  font-family: 'Cormorant Garamond', serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-  width: 90%;
-  max-width: 520px;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  box-shadow: 0 0 60px rgba(234, 179, 8, 0.08);
 }
 
 h1 {
   text-align: center;
-  letter-spacing: 4px;
-  margin-bottom: 6px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
 
 .subtitle {
   text-align: center;
+  font-size: 14px;
   opacity: 0.7;
-  margin-top: 0;
+  margin-bottom: 30px;
 }
 
-.chat-box {
-  height: 320px;
-  overflow-y: auto;
-  margin: 18px 0;
-  padding: 10px;
-  border: 1px solid #B7A36A33;
-}
-
-textarea {
+input {
   width: 100%;
+  padding: 12px;
   background: transparent;
-  color: #EAE7E2;
-  border: 1px solid #B7A36A55;
-  padding: 10px;
-  min-height: 80px;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  color: #e5e7eb;
+  font-size: 16px;
+  outline: none;
 }
 
 button {
   width: 100%;
-  margin-top: 10px;
-  background: #B7A36A;
-  border: none;
+  margin-top: 12px;
   padding: 12px;
+  background: #eab308;
+  color: #020617;
+  border: none;
   cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #facc15;
+}
+
+.respostas {
+  margin-top: 25px;
+}
+
+.respostas p {
+  margin: 10px 0;
+  opacity: 0.9;
 }
